@@ -1,0 +1,232 @@
+[
+  {
+    "item": "plastic bottle",
+    "synonyms": ["plastic bottles", "water bottle", "drink bottle", "pet bottle", "soda bottle", "juice bottle"],
+    "hku_hall_bin": "Plastic bottle bin on an HKU smart recycling bin (not available at Central Podium Levels or Pine Court; use the Plastic slot at re Kiosk instead)",
+    "epd_smart_bin": "Plastic bottles bin",
+    "prep_step": "Empty it, remove the cap and label, and rinse before recycling.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/re-facilities",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-10-24"
+  },
+  {
+    "item": "personal care bottle",
+    "synonyms": ["shampoo bottle", "shower gel bottle", "lotion bottle", "body wash bottle", "conditioner bottle", "pump bottle"],
+    "hku_hall_bin": "Other plastic bin (HKU smart bin) or the Plastic slot at re Kiosk",
+    "epd_smart_bin": "Plastic bottles bin",
+    "prep_step": "Remove the pump (pumps are not accepted), empty the bottle, remove the label and rinse.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/photo-guide",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-10-24"
+  },
+  {
+    "item": "aluminium can",
+    "synonyms": ["aluminum can", "aluminium cans", "aluminum cans", "drink can", "soda can", "beer can", "coke can"],
+    "hku_hall_bin": "Metal bin (HKU smart bin or re Kiosk)",
+    "epd_smart_bin": "Metals bin",
+    "prep_step": "Empty it, remove the label and rinse before recycling.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/re-facilities",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-10-24"
+  },
+  {
+    "item": "food can",
+    "synonyms": ["tin can", "food tin", "canned food tin", "empty can", "tuna can"],
+    "hku_hall_bin": "Metal bin (HKU smart bin or re Kiosk)",
+    "epd_smart_bin": "Metals bin",
+    "prep_step": "Empty it, remove the label and rinse before recycling.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/re-facilities",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-10-24"
+  },
+  {
+    "item": "mooncake tin",
+    "synonyms": ["mooncake container", "mooncake box", "biscuit tin", "cookie tin"],
+    "hku_hall_bin": "Metal bin (HKU smart bin or re Kiosk)",
+    "epd_smart_bin": "Metals bin",
+    "prep_step": "Remove any plastic trays and food crumbs first.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/photo-guide",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-10-24"
+  },
+  {
+    "item": "newspaper",
+    "synonyms": ["newspapers", "old newspaper", "news paper"],
+    "hku_hall_bin": "Paper bin (HKU smart bin or re Kiosk)",
+    "epd_smart_bin": "Paper bin",
+    "prep_step": "Remove any non-paper inserts and keep it dry.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/re-facilities",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-10-24"
+  },
+  {
+    "item": "cardboard box",
+    "synonyms": ["cardboard", "carton box", "delivery box", "parcel box", "shipping box", "corrugated box"],
+    "hku_hall_bin": "Paper bin (HKU smart bin or re Kiosk)",
+    "epd_smart_bin": "Paper bin",
+    "prep_step": "Tear off plastic tape, remove non-paper materials, flatten and keep dry.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/re-facilities",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-10-24"
+  },
+  {
+    "item": "office paper",
+    "synonyms": ["printer paper", "a4 paper", "lecture notes", "printed paper", "paper", "notebook paper", "worksheet"],
+    "hku_hall_bin": "Paper bin (HKU smart bin or re Kiosk)",
+    "epd_smart_bin": "Paper bin",
+    "prep_step": "Remove non-paper materials such as plastic folders and keep it dry.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/re-facilities",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-10-24"
+  },
+  {
+    "item": "magazine",
+    "synonyms": ["magazines", "book", "books", "textbook", "booklet", "leaflet", "flyer"],
+    "hku_hall_bin": "Paper bin (HKU smart bin or re Kiosk)",
+    "epd_smart_bin": "Paper bin",
+    "prep_step": "Remove any plastic wrapping or non-paper parts and keep it dry.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/re-facilities",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-10-24"
+  },
+  {
+    "item": "pizza box",
+    "synonyms": ["pizza boxes", "clean pizza box"],
+    "hku_hall_bin": "Paper bin (HKU smart bin or re Kiosk), only if the box is clean",
+    "epd_smart_bin": "Paper bin, only if clean and dry",
+    "prep_step": "Remove all leftover food. Only a clean box is accepted.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/photo-guide",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-10-24"
+  },
+  {
+    "item": "drink carton",
+    "synonyms": ["tetra pak", "tetrapak", "beverage carton", "milk carton", "juice carton", "lemon tea carton", "soy milk carton"],
+    "hku_hall_bin": "Tetra Pak slot at re Kiosk (Run Run Shaw Podium). Not accepted in HKU smart bins.",
+    "epd_smart_bin": "Not an EPD smart bin category. Take it to a GREEN@COMMUNITY point or a bin labelled for beverage cartons.",
+    "prep_step": "Remove the straw and plastic wrapping, cut a corner, rinse, dry and flatten.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/re-facilities",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-10-24"
+  },
+  {
+    "item": "takeaway coffee cup",
+    "synonyms": ["coffee cup", "paper cup", "disposable cup", "cup with lid", "starbucks cup"],
+    "hku_hall_bin": "Split it at re Kiosk: clean lid in Plastic, cup sleeve in Paper, clean cup in Tetra Pak.",
+    "epd_smart_bin": "Not covered by EPD published rules. Please ask your hall office.",
+    "prep_step": "Empty and rinse the cup, then separate the lid, sleeve and cup.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/photo-guide",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-10-24"
+  },
+  {
+    "item": "glass bottle",
+    "synonyms": ["glass bottles", "wine bottle", "beer bottle", "glass jar", "sauce bottle"],
+    "hku_hall_bin": "Glass bottle bin on HKU smart bins at Central Podium Levels and Pine Court only, or the Glass Bottle slot at re Kiosk",
+    "epd_smart_bin": "Glass bottles bin",
+    "prep_step": "Remove the lid and rinse the bottle before recycling.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/re-facilities",
+    "epd_source_url": "https://isd.gov.hk/eng/tvapi/14_ep144.html",
+    "date_checked": "2026-10-24"
+  },
+  {
+    "item": "styrofoam box",
+    "synonyms": ["greasy takeaway box", "foam box", "foam takeaway box", "polystyrene box", "styrofoam", "foam container", "takeaway foam box"],
+    "hku_hall_bin": "Other plastic bin (HKU smart bin) or the Plastic slot at re Kiosk, only with no food residue",
+    "epd_smart_bin": "Not covered by EPD published rules. Please ask your hall office.",
+    "prep_step": "Remove all food and grease. Stains are OK, but a box with food residue is not accepted.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/photo-guide",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-10-24"
+  },
+  {
+    "item": "plastic takeaway container",
+    "synonyms": ["takeaway box", "plastic lunch box", "plastic food container", "plastic food tray", "fruit tray", "plastic container", "takeout container"],
+    "hku_hall_bin": "Other plastic bin (HKU smart bin) or the Plastic slot at re Kiosk",
+    "epd_smart_bin": "Plastics bin (EPD bins are being relabelled from 'plastic bottles' to 'plastics' to accept all waste plastics)",
+    "prep_step": "Empty it and rinse off all food residue.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/photo-guide",
+    "epd_source_url": "https://www.info.gov.hk/gia/general/202402/28/P2024022800418.htm",
+    "date_checked": "2026-10-24"
+  },
+  {
+    "item": "instant noodle cup",
+    "synonyms": ["cup noodle", "cup noodles", "instant noodle container", "noodle cup", "instant noodle bowl"],
+    "hku_hall_bin": "Plastic slot at re Kiosk for the cup and its plastic wrapping. The lid is not accepted.",
+    "epd_smart_bin": "Plastics bin for the cup and wrapping (all waste plastics are being accepted)",
+    "prep_step": "Remove and bin the lid, then empty and rinse the cup.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/photo-guide",
+    "epd_source_url": "https://www.info.gov.hk/gia/general/202402/28/P2024022800418.htm",
+    "date_checked": "2026-10-24"
+  },
+  {
+    "item": "foam fruit net",
+    "synonyms": ["foam net", "fruit net", "foam sleeve", "apple net"],
+    "hku_hall_bin": "Plastic slot at re Kiosk",
+    "epd_smart_bin": "Not covered by EPD published rules. Please ask your hall office.",
+    "prep_step": "Make sure it is clean and dry.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/photo-guide",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-10-24"
+  },
+  {
+    "item": "contact lens packaging",
+    "synonyms": ["contact lens case", "contact lens blister", "lens packaging"],
+    "hku_hall_bin": "Plastic slot at re Kiosk for the tray. The foil lid is not accepted.",
+    "epd_smart_bin": "Not covered by EPD published rules. Please ask your hall office.",
+    "prep_step": "Peel off and bin the foil lid, then rinse the plastic tray.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/photo-guide",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-10-24"
+  },
+  {
+    "item": "cling film",
+    "synonyms": ["cling wrap", "plastic wrap", "food wrap", "saran wrap"],
+    "hku_hall_bin": "Not accepted for recycling. Put it in general waste.",
+    "epd_smart_bin": "Not covered by EPD published rules. Please ask your hall office.",
+    "prep_step": "No prep: this item is not accepted.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/photo-guide",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-10-24"
+  },
+  {
+    "item": "baking paper",
+    "synonyms": ["parchment paper", "greaseproof paper"],
+    "hku_hall_bin": "Not accepted for recycling. Put it in general waste.",
+    "epd_smart_bin": "Not covered by EPD published rules. Please ask your hall office.",
+    "prep_step": "No prep: this item is not accepted.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/photo-guide",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-10-24"
+  },
+  {
+    "item": "snack packet",
+    "synonyms": ["chip bag", "crisp packet", "chips packet", "foil lined snack packaging", "snack bag", "biscuit wrapper"],
+    "hku_hall_bin": "Not accepted for recycling. Put it in general waste.",
+    "epd_smart_bin": "Not covered by EPD published rules. Please ask your hall office.",
+    "prep_step": "No prep: foil-lined packaging is not accepted.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/photo-guide",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-10-24"
+  },
+  {
+    "item": "aluminium foil pouch",
+    "synonyms": ["foil pouch", "aluminum foil pouch", "drink pouch", "juice pouch", "retort pouch"],
+    "hku_hall_bin": "Not accepted for recycling. Put it in general waste.",
+    "epd_smart_bin": "Not covered by EPD published rules. Please ask your hall office.",
+    "prep_step": "No prep: this item is not accepted.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/photo-guide",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-10-24"
+  },
+  {
+    "item": "rechargeable battery",
+    "synonyms": ["rechargeable batteries", "battery", "batteries", "phone battery", "laptop battery", "camera battery"],
+    "hku_hall_bin": "Rechargeable Battery slot at re Kiosk (Run Run Shaw Podium). Not accepted in HKU smart bins.",
+    "epd_smart_bin": "Not an EPD smart bin category. Use the EPD Rechargeable Battery Recycling Programme or a GREEN@COMMUNITY point.",
+    "prep_step": "Only rechargeable batteries are listed. Never put batteries in ordinary recycling bins.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/re-facilities",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/rechargeable-battery-recycling-programme",
+    "date_checked": "2026-10-24"
+  }
+]
