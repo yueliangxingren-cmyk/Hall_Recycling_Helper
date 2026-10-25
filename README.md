@@ -147,3 +147,22 @@ been inferred. Once readable copies are available, map each actual criterion
 to a document section and evidence, and resolve any remaining gaps.
 
 Implementation sequence and acceptance criteria are in `IMPLEMENTATION_PLAN.md`.
+
+
+## Example core-path check
+
+1. Select **EPD smart bin**.
+2. Enter `pencil`.
+3. Select **Ask**.
+4. Confirm that the interface displays **Checking…** while processing.
+5. Confirm that the expected unsupported-item result appears:
+
+   ```text
+   Not covered by published rules — please ask your hall office.
+   ```
+
+This example checks the live input → processing → output path and unsupported-item guidance.
+
+## Demonstration
+
+The submission recording, `demo.mp4`, shows the running web application and live item checks in 54.49 seconds.
