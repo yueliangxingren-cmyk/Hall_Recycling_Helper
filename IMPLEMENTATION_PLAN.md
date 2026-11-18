@@ -115,3 +115,13 @@ After readable assessment sources are available, verify their precise criteria,
 format/length limits, required demonstrations and evidence, and any source or
 AI-use disclosure requirements. Record only requirements actually stated in
 those sources. Keep unperformed live checks explicitly pending.
+
+## mmcheng55 follow-up (18 November 2026)
+
+The earlier DNS blocker was bypassed by running with authorized network access.
+The real chat-only smoke test passed with validated LLM output. Direct runtime
+and test dependencies are now pinned; the 30-case evaluator and per-case
+evidence are documented in `REPORT_NOTES_MMCHENG55.md`. That report and the
+`results/` artifacts supersede the earlier pending chat-provider checks above.
+Live embeddings remain unverified because they are not configured. The expanded
+regression suite passes 58 tests; `results/unit-tests.txt` preserves the output.

@@ -199,3 +199,27 @@ This example checks the live input → processing → output path and unsupporte
 ## Demonstration
 
 The submission recording, `demo.mp4`, shows the running web application and live item checks in 54.49 seconds.
+
+## Repeatable 30-case evaluation (mmcheng55)
+
+Install the pinned development dependencies with
+`python -m pip install -r requirements-dev.txt`. The fixed `tests.csv` contains
+expected responses for both contexts, synonyms and normalization, hazards,
+unsupported items, and a published rejection. Run from the repository root:
+
+```bash
+python -m unittest discover -s tests -v
+python scripts/evaluate.py --offline --output results/my-offline.json
+python scripts/evaluate.py --output results/my-live-1.json
+python scripts/evaluate.py --output results/my-live-2.json
+```
+
+Live mode uses the configured `.env` credentials and makes real provider calls.
+It requires `grounding: llm` for every expected `ok` answer and exits nonzero on
+any failed case. Published-rule fallback can pass content checks but cannot pass
+the live check. Each JSON evidence file records full responses, checks, timings,
+model, dependency versions and input/code hashes; credentials are excluded.
+Existing evidence files are never overwritten. This runner exercises the real
+FastAPI route in process, so no listening server is required. It does not test
+browser behavior or deployment. See `REPORT_NOTES_MMCHENG55.md` for results,
+limitations, report sections and the presentation speaking draft.

@@ -1,0 +1,13 @@
+........LLM output failed grounding validation; using published rule
+LLM output failed grounding validation; using published rule
+LLM output failed grounding validation; using published rule
+LLM output failed grounding validation; using published rule
+LLM output failed grounding validation; using published rule
+.LLM output failed grounding validation; using published rule
+LLM unavailable (provider_error: Provider operation failed); using published rule
+...................Embedding retrieval unavailable (provider_error: Provider operation failed); returning no match
+..............................
+----------------------------------------------------------------------
+Ran 58 tests in 0.118s
+
+OK

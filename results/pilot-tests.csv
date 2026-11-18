@@ -1,0 +1,31 @@
+id,category,item,context,expected_status,expected_matched_item,expected_bin,expected_prep_step,expected_source_url,expected_date_checked,expected_retrieval_method
+T01,covered_pair,plastic bottle,hku_hall,ok,plastic bottle,Plastic bottle bin on an HKU smart recycling bin (not available at Central Podium Levels or Pine Court; use the Plastic slot at re Kiosk instead),"Empty it, remove the cap and label, and rinse before recycling.",https://www.wastereduction.hku.hk/re-facilities,2026-10-24,exact
+T02,covered_pair,plastic bottle,epd_smart,ok,plastic bottle,Plastic bottles bin,"Empty it, remove the cap and label, and rinse before recycling.",https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling,2026-10-24,exact
+T03,covered_pair,SHAMPOO BOTTLE,hku_hall,ok,personal care bottle,Other plastic bin (HKU smart bin) or the Plastic slot at re Kiosk,"Remove the pump (pumps are not accepted), empty the bottle, remove the label and rinse.",https://www.wastereduction.hku.hk/photo-guide,2026-10-24,exact
+T04,covered_pair,SHAMPOO BOTTLE,epd_smart,ok,personal care bottle,Plastic bottles bin,"Remove the pump (pumps are not accepted), empty the bottle, remove the label and rinse.",https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling,2026-10-24,exact
+T05,covered_pair,  soda   can  ,hku_hall,ok,aluminium can,Metal bin (HKU smart bin or re Kiosk),"Empty it, remove the label and rinse before recycling.",https://www.wastereduction.hku.hk/re-facilities,2026-10-24,exact
+T06,covered_pair,  soda   can  ,epd_smart,ok,aluminium can,Metals bin,"Empty it, remove the label and rinse before recycling.",https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling,2026-10-24,exact
+T07,covered_pair,tetra pak,hku_hall,ok,drink carton,Tetra Pak slot at re Kiosk (Run Run Shaw Podium). Not accepted in HKU smart bins.,"Remove the straw and plastic wrapping, cut a corner, rinse, dry and flatten.",https://www.wastereduction.hku.hk/re-facilities,2026-10-24,exact
+T08,covered_pair,tetra pak,epd_smart,ok,drink carton,Not an EPD smart bin category. Take it to a GREEN@COMMUNITY point or a bin labelled for beverage cartons.,"Remove the straw and plastic wrapping, cut a corner, rinse, dry and flatten.",https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling,2026-10-24,exact
+T09,covered_pair,glass jar,hku_hall,ok,glass bottle,"Glass bottle bin on HKU smart bins at Central Podium Levels and Pine Court only, or the Glass Bottle slot at re Kiosk",Remove the lid and rinse the bottle before recycling.,https://www.wastereduction.hku.hk/re-facilities,2026-10-24,exact
+T10,covered_pair,glass jar,epd_smart,ok,glass bottle,Glass bottles bin,Remove the lid and rinse the bottle before recycling.,https://isd.gov.hk/eng/tvapi/14_ep144.html,2026-10-24,exact
+T11,covered_pair,foam box,hku_hall,ok,styrofoam box,"Other plastic bin (HKU smart bin) or the Plastic slot at re Kiosk, only with no food residue","Remove all food and grease. Stains are OK, but a box with food residue is not accepted.",https://www.wastereduction.hku.hk/photo-guide,2026-11-18,exact
+T12,covered_pair,foam box,epd_smart,ok,styrofoam box,"Other plastics, only at EPD smart recycling bins that collect ""other plastics""","Remove all food and grease. Stains are OK, but a box with food residue is not accepted.",https://www.info.gov.hk/gia/general/202402/28/P2024022800418.htm,2026-11-18,exact
+T13,covered_pair,plastic fork,hku_hall,ok,plastic utensils,Plastic slot at re Kiosk,Make sure it is clean and dry.,https://www.wastereduction.hku.hk/recycling-101,2026-11-18,exact
+T14,covered_pair,plastic fork,epd_smart,ok,plastic utensils,"Other plastics, only at EPD smart recycling bins that collect ""other plastics""",Make sure it is clean and dry.,https://www.info.gov.hk/gia/general/202402/28/P2024022800418.htm,2026-11-18,exact
+T15,covered_pair,battery,hku_hall,ok,rechargeable battery,Rechargeable Battery slot at re Kiosk (Run Run Shaw Podium). Not accepted in HKU smart bins.,Only rechargeable batteries are listed. Never put batteries in ordinary recycling bins.,https://www.wastereduction.hku.hk/re-facilities,2026-10-24,exact
+T16,covered_pair,battery,epd_smart,ok,rechargeable battery,Not an EPD smart bin category. Use the EPD Rechargeable Battery Recycling Programme or a GREEN@COMMUNITY point.,Only rechargeable batteries are listed. Never put batteries in ordinary recycling bins.,https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/rechargeable-battery-recycling-programme,2026-10-24,exact
+T17,covered_pair,paper,hku_hall,ok,office paper,Paper bin (HKU smart bin or re Kiosk),Remove non-paper materials such as plastic folders and keep it dry.,https://www.wastereduction.hku.hk/re-facilities,2026-10-24,exact
+T18,covered_pair,paper,epd_smart,ok,office paper,Paper bin,Remove non-paper materials such as plastic folders and keep it dry.,https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling,2026-10-24,exact
+T19,covered_pair,newspapers,hku_hall,ok,newspaper,Paper bin (HKU smart bin or re Kiosk),Remove any non-paper inserts and keep it dry.,https://www.wastereduction.hku.hk/re-facilities,2026-10-24,exact
+T20,covered_pair,newspapers,epd_smart,ok,newspaper,Paper bin,Remove any non-paper inserts and keep it dry.,https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling,2026-10-24,exact
+T21,refused,power bank,hku_hall,refused,,,,,,none
+T22,refused,paint tin,epd_smart,refused,,,,,,none
+T23,refused,LITHIUM battery,hku_hall,refused,,,,,,none
+T24,refused,syringe,epd_smart,refused,,,,,,none
+T25,refused,aerosol can,hku_hall,refused,,,,,,none
+T26,not_covered,pencil,epd_smart,not_covered,,,,,,none
+T27,not_covered,ceramic mug,hku_hall,not_covered,,,,,,none
+T28,not_covered,envelope,epd_smart,not_covered,,,,,,none
+T29,not_covered,plastic bag,hku_hall,not_covered,,,,,,none
+T30,not_covered,single-use battery,epd_smart,not_covered,,,,,,none
