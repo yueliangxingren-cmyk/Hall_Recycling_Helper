@@ -27,7 +27,7 @@ class RetrievalTests(unittest.TestCase):
                 for context in ("hku_hall", "epd_smart"):
                     with self.subTest(name=name, context=context):
                         result = retriever.find_rule(name, context)
-                        if context == "epd_smart" and rule["epd_smart_bin"].startswith("Not covered"):
+                        if rule[f"{context}_bin"].startswith("Not covered"):
                             self.assertIsNone(result)
                         else:
                             expected = to_answer(rule, context)

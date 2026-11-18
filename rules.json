@@ -133,11 +133,11 @@
     "item": "styrofoam box",
     "synonyms": ["greasy takeaway box", "foam box", "foam takeaway box", "polystyrene box", "styrofoam", "foam container", "takeaway foam box"],
     "hku_hall_bin": "Other plastic bin (HKU smart bin) or the Plastic slot at re Kiosk, only with no food residue",
-    "epd_smart_bin": "Not covered by EPD published rules. Please ask your hall office.",
+    "epd_smart_bin": "Other plastics, only at EPD smart recycling bins that collect \"other plastics\"",
     "prep_step": "Remove all food and grease. Stains are OK, but a box with food residue is not accepted.",
     "hku_source_url": "https://www.wastereduction.hku.hk/photo-guide",
-    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
-    "date_checked": "2026-10-24"
+    "epd_source_url": "https://www.info.gov.hk/gia/general/202402/28/P2024022800418.htm",
+    "date_checked": "2026-11-18"
   },
   {
     "item": "plastic takeaway container",
@@ -228,5 +228,205 @@
     "hku_source_url": "https://www.wastereduction.hku.hk/re-facilities",
     "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/rechargeable-battery-recycling-programme",
     "date_checked": "2026-10-24"
+  },
+  {
+    "item": "envelope",
+    "synonyms": ["envelopes", "letter envelope"],
+    "hku_hall_bin": "Paper slot at re Kiosk",
+    "epd_smart_bin": "Not covered by EPD published rules. Please ask your hall office.",
+    "prep_step": "Remove all non-paper materials such as plastic coated pages and plastic tape before recycling.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/recycling-101",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-11-18"
+  },
+  {
+    "item": "paper folder",
+    "synonyms": ["paper folders", "manila folder"],
+    "hku_hall_bin": "Paper slot at re Kiosk",
+    "epd_smart_bin": "Not covered by EPD published rules. Please ask your hall office.",
+    "prep_step": "Remove all non-paper materials such as plastic coated pages and plastic tape before recycling.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/recycling-101",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-11-18"
+  },
+  {
+    "item": "toilet paper roll core",
+    "synonyms": ["toilet roll tube", "toilet paper tube", "tissue roll core"],
+    "hku_hall_bin": "Paper slot at re Kiosk",
+    "epd_smart_bin": "Not covered by EPD published rules. Please ask your hall office.",
+    "prep_step": "Remove all non-paper materials such as plastic coated pages and plastic tape before recycling.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/recycling-101",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-11-18"
+  },
+  {
+    "item": "business card",
+    "synonyms": ["business cards", "name card", "name cards"],
+    "hku_hall_bin": "Paper slot at re Kiosk (standard paper business cards only)",
+    "epd_smart_bin": "Not covered by EPD published rules. Please ask your hall office.",
+    "prep_step": "Remove all non-paper materials such as plastic coated pages and plastic tape before recycling.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/recycling-101",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-11-18"
+  },
+  {
+    "item": "napkin",
+    "synonyms": ["napkins", "tissue", "tissues", "toilet paper", "serviette"],
+    "hku_hall_bin": "Not accepted for recycling at re Kiosk",
+    "epd_smart_bin": "Not covered by EPD published rules. Please ask your hall office.",
+    "prep_step": "No prep: this item is not accepted.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/recycling-101",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-11-18"
+  },
+  {
+    "item": "paper tableware",
+    "synonyms": ["paper plate", "paper plates", "paper bowl"],
+    "hku_hall_bin": "Not accepted for recycling at re Kiosk",
+    "epd_smart_bin": "Not covered by EPD published rules. Please ask your hall office.",
+    "prep_step": "No prep: this item is not accepted.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/recycling-101",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-11-18"
+  },
+  {
+    "item": "sticker",
+    "synonyms": ["stickers", "sticker paper", "adhesive paper", "label sticker"],
+    "hku_hall_bin": "Not accepted for recycling at re Kiosk",
+    "epd_smart_bin": "Not covered by EPD published rules. Please ask your hall office.",
+    "prep_step": "No prep: this item is not accepted.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/recycling-101",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-11-18"
+  },
+  {
+    "item": "food-stained paper",
+    "synonyms": ["greasy paper", "oily paper", "dirty paper"],
+    "hku_hall_bin": "Not accepted for recycling at re Kiosk",
+    "epd_smart_bin": "Not covered by EPD published rules. Please ask your hall office.",
+    "prep_step": "No prep: this item is not accepted.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/recycling-101",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-11-18"
+  },
+  {
+    "item": "potato chips can",
+    "synonyms": ["chips can", "pringles can", "crisps tube"],
+    "hku_hall_bin": "Not accepted for recycling at re Kiosk",
+    "epd_smart_bin": "Not covered by EPD published rules. Please ask your hall office.",
+    "prep_step": "No prep: this item is not accepted.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/recycling-101",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-11-18"
+  },
+  {
+    "item": "beer bottle cap",
+    "synonyms": ["bottle cap", "bottle caps", "crown cap"],
+    "hku_hall_bin": "Not accepted for recycling at re Kiosk",
+    "epd_smart_bin": "Not covered by EPD published rules. Please ask your hall office.",
+    "prep_step": "No prep: this item is not accepted.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/recycling-101",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-11-18"
+  },
+  {
+    "item": "cookware",
+    "synonyms": ["pot", "pan", "frying pan", "wok", "saucepan"],
+    "hku_hall_bin": "Not accepted for recycling at re Kiosk",
+    "epd_smart_bin": "Not covered by EPD published rules. Please ask your hall office.",
+    "prep_step": "No prep: this item is not accepted.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/recycling-101",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-11-18"
+  },
+  {
+    "item": "plastic utensils",
+    "synonyms": ["plastic cutlery", "plastic fork", "plastic spoon", "plastic knife", "disposable cutlery"],
+    "hku_hall_bin": "Plastic slot at re Kiosk",
+    "epd_smart_bin": "Other plastics, only at EPD smart recycling bins that collect \"other plastics\"",
+    "prep_step": "Make sure it is clean and dry.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/recycling-101",
+    "epd_source_url": "https://www.info.gov.hk/gia/general/202402/28/P2024022800418.htm",
+    "date_checked": "2026-11-18"
+  },
+  {
+    "item": "plastic bag",
+    "synonyms": ["plastic bags", "shopping bag", "carrier bag"],
+    "hku_hall_bin": "Not covered by HKU published rules. Please ask your hall office.",
+    "epd_smart_bin": "Other plastics, only at EPD smart recycling bins that collect \"other plastics\"",
+    "prep_step": "No specific prep step is published for this item.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/recycling-101",
+    "epd_source_url": "https://www.info.gov.hk/gia/general/202402/28/P2024022800418.htm",
+    "date_checked": "2026-11-18"
+  },
+  {
+    "item": "cd",
+    "synonyms": ["cds", "compact disc"],
+    "hku_hall_bin": "Plastic slot at re Kiosk",
+    "epd_smart_bin": "Not covered by EPD published rules. Please ask your hall office.",
+    "prep_step": "Make sure it is clean and dry.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/recycling-101",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-11-18"
+  },
+  {
+    "item": "medicine container",
+    "synonyms": ["medicine bottle", "pill bottle", "pill box"],
+    "hku_hall_bin": "Not accepted for recycling at re Kiosk",
+    "epd_smart_bin": "Not covered by EPD published rules. Please ask your hall office.",
+    "prep_step": "No prep: this item is not accepted.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/recycling-101",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-11-18"
+  },
+  {
+    "item": "correction fluid container",
+    "synonyms": ["correction fluid", "correction fluid bottle", "white out bottle"],
+    "hku_hall_bin": "Not accepted for recycling at re Kiosk",
+    "epd_smart_bin": "Not covered by EPD published rules. Please ask your hall office.",
+    "prep_step": "No prep: this item is not accepted.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/recycling-101",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-11-18"
+  },
+  {
+    "item": "toothpaste tube",
+    "synonyms": ["toothpaste tubes"],
+    "hku_hall_bin": "Not accepted for recycling at re Kiosk",
+    "epd_smart_bin": "Not covered by EPD published rules. Please ask your hall office.",
+    "prep_step": "No prep: this item is not accepted.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/recycling-101",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-11-18"
+  },
+  {
+    "item": "rubber gloves",
+    "synonyms": ["rubber glove", "silicone product", "rubber band"],
+    "hku_hall_bin": "Not accepted for recycling at re Kiosk",
+    "epd_smart_bin": "Not covered by EPD published rules. Please ask your hall office.",
+    "prep_step": "No prep: this item is not accepted.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/recycling-101",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-11-18"
+  },
+  {
+    "item": "tempered glass",
+    "synonyms": ["laminated glass", "strengthened glass"],
+    "hku_hall_bin": "Not accepted in the Glass Bottle slot at re Kiosk",
+    "epd_smart_bin": "Not covered by EPD published rules. Please ask your hall office.",
+    "prep_step": "No prep: this item is not accepted.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/recycling-101",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling",
+    "date_checked": "2026-11-18"
+  },
+  {
+    "item": "single-use battery",
+    "synonyms": ["single use battery", "disposable battery", "alkaline battery", "aa battery", "aaa battery"],
+    "hku_hall_bin": "Not accepted at re Kiosk (only rechargeable batteries are accepted)",
+    "epd_smart_bin": "Not an EPD smart bin category. The EPD Rechargeable Battery Recycling Programme covers rechargeable batteries only.",
+    "prep_step": "No prep: this item is not accepted.",
+    "hku_source_url": "https://www.wastereduction.hku.hk/recycling-101",
+    "epd_source_url": "https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/rechargeable-battery-recycling-programme",
+    "date_checked": "2026-11-18"
   }
 ]

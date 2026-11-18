@@ -1,4 +1,5 @@
 import json
+import math
 import unittest
 from unittest.mock import Mock, patch
 
@@ -90,7 +91,8 @@ class AppTests(unittest.TestCase):
         self.assertEqual(data["prep_step"], RULES[0]["prep_step"])
         self.assertEqual(data["source_url"], RULES[0]["hku_source_url"])
         self.assertEqual(data["date_checked"], RULES[0]["date_checked"])
-        self.assertEqual(len(calls), 5)  # Three rule batches, one query, one chat.
+        # Rule batches of ten, one query, one chat.
+        self.assertEqual(len(calls), math.ceil(len(RULES) / 10) + 2)
 
 
 if __name__ == "__main__":
