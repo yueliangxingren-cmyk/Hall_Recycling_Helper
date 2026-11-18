@@ -71,7 +71,8 @@ them as a successful live LLM test.
   grounding with published-rule fallback.
 - Installed application and test dependencies from existing cached wheels after
   PyPI DNS resolution failed.
-- All 41 automated regression and API tests pass. The single semantic `/ask`
+- All 41 automated regression and API tests passed at that point. After the
+  rules expansion (2026-11-18), 55 tests pass. The single semantic `/ask`
   integration case covers rule embedding batches, query embedding, rule
   selection, LLM JSON validation, and API serialization. External HTTP transport
   is mocked; this is not a live provider check.
@@ -104,6 +105,8 @@ them as a successful live LLM test.
 | Embedding threshold and source priority | Controlled-vector tests and mocked transport integration | Validate the actual provider/model; retain the threshold unless separately justified |
 | LLM grounding | Tests reject altered bin/prep text, added advice, and invented provenance; failures log safe diagnostic codes | Run one live chat-backed case with provider network access |
 | Published source and date | API fields are copied from `rules.json` | Dataset provenance is retained; independent source re-verification is outside these tests |
+| Rules dataset (43 rules) | `tests/test_rules_dataset.py` checks required keys and order, `https` official-domain URLs (`*.hku.hk`, `*.gov.hk`), at least 40 rules, lowercase and unshared synonyms, and no hazard words. It also runs one exact-match `/ask` example per test group: covered, cross-system, EPD not covered, EPD-only, HKU-rejected and the styrofoam EPD correction. All 55 tests and the offline in-process smoke test passed on 2026-11-18 | Sources were read on 2026-11-18. A team member should spot-check them against the live pages before submission |
+| Hall-level rules and bin-location hints | Not delivered: no published hall recycling source was found (see `REPORT_NOTES_ALEX.md`). Hall > HKU > EPD priority is tested with synthetic fixtures only, and a test asserts that no hall rule ships in `rules.json` | Add hall rules and hints only with a published, dated hall source |
 | API route and serialization | Single offline end-to-end case passes through the actual FastAPI app in process | Live model calls need provider network access; TCP serving needs a terminal that permits listening |
 | Rubric coverage | Source PDF identities resolved, contents unavailable | Obtain readable text/pages, enumerate actual criteria, and add criterion-to-section mapping |
 | Required submission format and sections | Not yet known | Confirm against the requirements PDF before calling this submission-ready |

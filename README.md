@@ -16,6 +16,39 @@ Then open http://127.0.0.1:8000 in a browser.
 
 Rules live in `rules.json`. Restart the server after editing it.
 
+## Rules dataset
+
+`rules.json` holds **43 rules**. Every bin, preparation step and citation comes
+from an official HKU (`*.hku.hk`) or Hong Kong Government (`*.gov.hk`) page.
+They come from HKU re Campaign (Recycling 101, Photo Guide and re Facilities),
+EPD Clean Recycling, the EPD Rechargeable Battery Recycling Programme and
+Government press releases. Many HKU answers say that an item is **not
+accepted** at re Kiosk, and many EPD answers say that no published EPD rule
+covers the item. These are deliberate test cases, not gaps.
+
+To add a rule, copy an existing entry and keep the same keys in the same
+order. Use lowercase synonyms that no other item uses, and avoid any word in
+`HAZARD_KEYWORDS`. Cite the exact official page and set `date_checked` to the
+day you read it. If a page does not clearly say where an item goes, leave the
+item out: unmatched items return `not_covered`.
+`tests/test_rules_dataset.py` checks the keys, official URLs, synonym clashes,
+hazard words and the minimum rule count.
+
+### Hall-level rules and bin-location hints
+
+The dataset has **no hall-level rules** yet, and answers include no hall
+bin-location hints. We found no published recycling rule or recycling-bin
+location for any HKU hall. We checked the HKU Regulations Governing Halls and
+Flats, the CEDARS housing policies page and the CEDARS combined residence
+handbook. The handbook mentions only garbage collection points. The Hall > HKU
+> EPD priority logic is implemented and tested with clearly synthetic test
+fixtures.
+
+To add a hall rule once a hall publishes one, add a separate entry with the
+same `item`. Give it the hall's bin text and URL, and set
+`"hku_source_level": "hall"` (see step 4 under Retrieval and grounding).
+Location hints would also need a published, dated source for each hall.
+
 ## Configure model providers
 
 No provider or model is assumed. Copy
