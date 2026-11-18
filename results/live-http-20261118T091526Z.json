@@ -1,0 +1,40 @@
+{
+  "timestamp_utc": "20261118T091526Z",
+  "transport": "localhost TCP HTTP to uvicorn",
+  "smoke_exit_code": 0,
+  "smoke_stdout": "PASS: published item\nPASS: status\nPASS: bin including location exception\nPASS: all preparation steps\nPASS: HKU citation\nPASS: verification date\nPASS: retrieval\nPASS: validated live LLM\n{\n  \"status\": \"ok\",\n  \"bin\": \"Plastic bottle bin on an HKU smart recycling bin (not available at Central Podium Levels or Pine Court; use the Plastic slot at re Kiosk instead)\",\n  \"prep_step\": \"Empty it, remove the cap and label, and rinse before recycling.\",\n  \"source_url\": \"https://www.wastereduction.hku.hk/re-facilities\",\n  \"date_checked\": \"2026-10-24\",\n  \"message\": \"Published guidance for \\\"plastic bottle\\\".\",\n  \"matched_item\": \"plastic bottle\",\n  \"retrieval_method\": \"exact\",\n  \"similarity\": null,\n  \"grounding\": \"llm\"\n}\n",
+  "smoke_stderr": "",
+  "additional_checks": {
+    "webpage_http_200": true,
+    "power bank": {
+      "passed": true,
+      "response": {
+        "status": "refused",
+        "bin": "",
+        "prep_step": "",
+        "source_url": "",
+        "date_checked": "",
+        "message": "This item may be hazardous and must not go in ordinary recycling bins. Please contact your hall staff or use a proper hazardous-waste collection point.",
+        "matched_item": "",
+        "retrieval_method": "none",
+        "similarity": null,
+        "grounding": "not_applicable"
+      }
+    },
+    "pencil": {
+      "passed": true,
+      "response": {
+        "status": "not_covered",
+        "bin": "",
+        "prep_step": "",
+        "source_url": "",
+        "date_checked": "",
+        "message": "Not covered by published rules \u2014 please ask your hall office.",
+        "matched_item": "",
+        "retrieval_method": "none",
+        "similarity": null,
+        "grounding": "not_applicable"
+      }
+    }
+  }
+}

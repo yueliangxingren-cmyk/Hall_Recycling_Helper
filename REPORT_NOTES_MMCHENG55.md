@@ -35,7 +35,7 @@ published-rule message. The `grounding` field distinguishes validated `llm`
 output from `published_rule` fallback. This design bounds the model's role to
 formatting; it does not independently establish the truth of the source data.
 
-## §3 Evaluation method
+## §3 Evaluation
 
 `scripts/evaluate.py` submits the 30 fixed `tests.csv` requests through the real
 FastAPI route using TestClient. Live mode makes external requests to the
@@ -62,52 +62,8 @@ responses, timings, checks, model, Python/dependency versions, commit identity,
 and SHA-256 hashes of inputs and application files. The commit identifies the
 base checkout; hashes capture the evaluated uncommitted files.
 
-### Pilot and limitations
+### Recorded results (18 November 2026)
 
-The first offline pilot scored 29/30. Its T30 expectation incorrectly assumed
-that a single-use battery in EPD context would return `not_covered`. Inspection
-of the published-rule contract showed that the app returns `ok` with a factual
-rejection message. The fixture was corrected before live testing; application
-code and source rules were unchanged. `results/pilot-tests.csv` and
-`results/pilot-offline.json` retain that evidence. Final offline results are in
-`results/offline.json` (30/30).
-
-The suite is small and deliberately fixed; it is not an estimate of accuracy
-on arbitrary user queries. No live semantic retrieval was tested, because no
-embedding credentials/model were configured. Unknown inputs therefore exercise
-abstention without embeddings. Mocked/vector regression tests separately cover
-semantic thresholds and failure handling. TestClient tests route execution and
-serialization, not TCP serving, browser rendering or deployment. Latencies
-include network and provider work in this environment and are not load-test
-measurements. Two repeated runs cannot establish general model reliability.
-
-## §6 Contribution entry (draft for review)
-
-For mmcheng55: Prepared the fixed 30-case CSV and repeatable evaluation runner,
-pinned the direct runtime and test dependencies to installed versions, and
-executed offline checks and real chat-provider evaluation. Prepared report
-sections on the pipeline and evaluation, preserved per-case evidence, and
-drafted the presentation segment. Codex assisted with code, evaluation
-execution, and writing. The member must review the artifacts and deliver their
-own speaking segment; no attendance or recording is claimed here.
-
-## Presentation segment (approximately 35–40 seconds)
-
-“Our helper checks hazardous items first, then looks up the published rule for
-the selected recycling system. The language model can only choose approved
-wording; bin instructions, preparation steps and citations stay tied to the
-rule. I prepared thirty test cases covering both systems, aliases, hazards and
-unsupported items, and tested the real chat provider twice. Our evaluation
-separates correct fallback answers from successful model responses. These tests
-cover the API pipeline; they do not establish live semantic retrieval, because
-embeddings were not configured.”
-
-Record this segment yourself in the team's three-minute video with your full
-name visible. Replace the result wording with the measured results below if
-time permits. The screenshot provides only the account handle, not the full
-name; none has been invented.
-
-## Recorded results (18 November 2026)
 
 | Measure | Live run 1 | Live run 2 |
 | --- | --- | --- |
@@ -137,6 +93,77 @@ Evidence: `results/live-run-1.json`, `results/live-run-2.json`,
 application dependencies, and the test dependency is also pinned; this is not
 a full transitive dependency lock or a fresh-install verification.
 
-Optional sentence for the presentation: “Both runs delivered all thirty
-expected answers; each had one model timeout that safely fell back to the
-published rule.”
+### Live HTTP verification
+
+On 18 November 2026 at 17:15 Hong Kong time, started Uvicorn on
+`http://127.0.0.1:8765` and ran `scripts/smoke_test.py --exact --base-url
+http://127.0.0.1:8765`. All eight assertions passed, including validated real
+LLM output (`grounding: llm`); the command exited 0. Additional HTTP checks
+confirmed the home page returns 200, `power bank` returns `refused`, and
+`pencil` returns `not_covered`. Evidence is saved in
+`results/live-http-20261118T091526Z.json`. This follow-up verifies local TCP
+serving and a real chat-provider request, in addition to the earlier in-process
+runs. It does not establish browser interaction, public deployment, or live
+embedding retrieval, and does not replace the two recorded evaluation runs.
+
+| Live HTTP check | Observed result |
+| --- | --- |
+| Published item, status, full bin instruction, preparation, citation, checked date and exact retrieval | All seven response checks passed |
+| Real chat output | `grounding: llm`; live assertion passed (8/8 total) |
+| Home page | HTTP 200 |
+| `power bank` in HKU context | `refused` |
+| `pencil` in HKU context | `not_covered` |
+
+The successful HTTP smoke check is a separate, single-case demonstration. It
+confirms that the running server can reach the real chat provider; the two
+30-case evaluations still each retain their recorded timeout and 29/30 strict
+live score.
+
+Evidence files: [live run 1](results/live-run-1.json),
+[live run 2](results/live-run-2.json), and
+[live HTTP check](results/live-http-20261118T091526Z.json).
+
+### Pilot and limitations
+
+The first offline pilot scored 29/30. Its T30 expectation incorrectly assumed
+that a single-use battery in EPD context would return `not_covered`. Inspection
+of the published-rule contract showed that the app returns `ok` with a factual
+rejection message. The fixture was corrected before live testing; application
+code and source rules were unchanged. `results/pilot-tests.csv` and
+`results/pilot-offline.json` retain that evidence. Final offline results are in
+`results/offline.json` (30/30).
+
+The suite is small and deliberately fixed; it is not an estimate of accuracy
+on arbitrary user queries. No live semantic retrieval was tested, because no
+embedding credentials/model were configured. Unknown inputs therefore exercise
+abstention without embeddings. Mocked/vector regression tests separately cover
+semantic thresholds and failure handling. TestClient tests route execution and
+serialization, not TCP serving, browser rendering or deployment. Latencies
+include network and provider work in this environment and are not load-test
+measurements. Two repeated runs cannot establish general model reliability.
+
+## §6 Contribution entry (draft for review)
+
+For mmcheng55: Prepared the fixed 30-case CSV and repeatable evaluation runner,
+pinned the direct runtime and test dependencies to installed versions, and
+executed offline checks, two real chat-provider evaluations, and a live HTTP
+check covering the running server, validated model output and refusal paths. Prepared report
+sections on the pipeline and evaluation, preserved per-case evidence, and
+drafted the presentation segment. Codex assisted with code, evaluation
+execution, and writing. The member must review the artifacts and deliver their
+own speaking segment; no attendance or recording is claimed here.
+
+## Presentation segment (approximately 35–40 seconds)
+
+“Our helper checks hazardous items first, then looks up the published rule for
+the selected recycling system. The language model can only choose approved
+wording; bin instructions, preparation steps and citations stay tied to the
+rule. I prepared thirty test cases covering both systems, aliases, hazards and
+unsupported items, and tested the real chat provider twice. Our evaluation
+separates correct fallback answers from successful model responses. These tests
+cover the API pipeline; they do not establish live semantic retrieval, because
+embeddings were not configured.”
+
+Record this segment yourself in the team's three-minute video with your full
+name visible. Include the measured results above if time permits. The screenshot provides only the account handle, not the full
+name; none has been invented.
