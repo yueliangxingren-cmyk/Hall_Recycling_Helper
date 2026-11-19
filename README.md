@@ -40,9 +40,9 @@ The dataset has **no hall-level rules** yet, and answers include no hall
 bin-location hints. We found no published recycling rule or recycling-bin
 location for any HKU hall. We checked the HKU Regulations Governing Halls and
 Flats, the CEDARS housing policies page and the CEDARS combined residence
-handbook. The handbook mentions only garbage collection points. The Hall > HKU
-> EPD priority logic is implemented and tested with clearly synthetic test
-fixtures.
+handbook. The handbook mentions only garbage collection points. The
+`Hall > HKU > EPD` priority logic is implemented and tested with clearly
+synthetic test fixtures.
 
 To add a hall rule once a hall publishes one, add a separate entry with the
 same `item`. Give it the hall's bin text and URL, and set

@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hall Recycling Helper</title>
+  <meta name="description" content="Hall Recycling Helper: an AILT9019 project that tells HKU hall residents which bin an everyday item goes in, with the published rule, preparation step and official source.">
+  <style>
+    :root {
+      --ink: #15231b;
+      --muted: #4a5a50;
+      --page: #f5f8f6;
+      --card: #ffffff;
+      --line: #d3ddd6;
+      --brand: #1d6b38;
+      --brand-dark: #144d28;
+      --brand-soft: #e6f3ea;
+      --amber: #c99a06;
+      --amber-soft: #fff4cc;
+      --red: #b3362a;
+      --red-soft: #fdecec;
+      --grey: #5f6b77;
+      --grey-soft: #eef1f4;
+      --link: #0b4f9c;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      margin: 0; background: var(--page); color: var(--ink);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-size: 1.0625rem; line-height: 1.6;
+    }
+    a { color: var(--link); }
+    a:focus-visible, .button:focus-visible { outline: 3px solid #f2b705; outline-offset: 2px; }
+    code { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 0.92em;
+           background: var(--grey-soft); padding: 0.1em 0.35em; border-radius: 4px; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 0 1rem; }
+
+    /* Top nav */
+    .topnav { position: sticky; top: 0; z-index: 10; background: var(--brand-dark); }
+    .topnav .wrap { display: flex; align-items: center; gap: 1rem; min-height: 3.25rem; }
+    .topnav .brand { color: #fff; font-weight: 800; text-decoration: none; white-space: nowrap; }
+    .topnav ul { display: flex; gap: 0.25rem; margin: 0; padding: 0; list-style: none;
+                 overflow-x: auto; scrollbar-width: thin; }
+    .topnav a.navlink { display: block; padding: 0.4rem 0.6rem; color: #e3f2e8; text-decoration: none;
+                        font-size: 0.92rem; font-weight: 600; white-space: nowrap; border-radius: 6px; }
+    .topnav a.navlink:hover { background: rgba(255,255,255,0.12); color: #fff; }
+
+    /* Hero */
+    .hero { background: var(--brand); color: #fff; padding: 3.5rem 0 3rem; }
+    .hero .eyebrow { color: #cfe8d7; }
+    .hero h1 { margin: 0.25rem 0 0.75rem; font-size: clamp(2.1rem, 5vw, 3.2rem); line-height: 1.1; letter-spacing: -0.01em; }
+    .hero p.pitch { margin: 0 0 1.75rem; max-width: 44rem; font-size: 1.25rem; color: #eef8f1; }
+    .buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .button { display: inline-block; padding: 0.7rem 1.3rem; border-radius: 8px; font-weight: 700;
+              text-decoration: none; border: 2px solid #fff; }
+    .button.primary { background: #fff; color: var(--brand-dark); }
+    .button.secondary { color: #fff; }
+    .button.secondary:hover { background: rgba(255,255,255,0.12); }
+
+    /* Sections */
+    section { padding: 3rem 0; border-bottom: 1px solid var(--line); }
+    section:nth-of-type(even) { background: var(--card); }
+    .eyebrow { margin: 0; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brand); }
+    h2 { margin: 0.2rem 0 1rem; font-size: clamp(1.6rem, 3.4vw, 2.1rem); line-height: 1.2; }
+    h3 { margin: 0 0 0.5rem; font-size: 1.15rem; }
+    p { margin: 0 0 1rem; }
+    .lead { font-size: 1.15rem; max-width: 46rem; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1.25rem 1.35rem; }
+    section:nth-of-type(even) .card { background: var(--page); }
+    .card ul { margin: 0; padding-left: 1.2rem; }
+    .card li + li { margin-top: 0.35rem; }
+    .card.built { border-top: 6px solid var(--brand); }
+    .card.existing { border-top: 6px solid var(--grey); }
+    .note { padding: 0.8rem 1rem; border-left: 6px solid var(--amber); background: var(--amber-soft); border-radius: 6px; }
+
+    /* Pipeline diagram */
+    .diagram { margin: 1.5rem auto 0; max-width: 640px; }
+    .diagram svg { display: block; width: 100%; height: auto; }
+    .diagram .node { fill: #fff; stroke: var(--brand); stroke-width: 2; }
+    .diagram .node.endpoint { fill: var(--brand-soft); }
+    .diagram .exit { stroke-width: 2; }
+    .diagram .exit.refused { fill: var(--red-soft); stroke: var(--red); }
+    .diagram .exit.nc { fill: var(--grey-soft); stroke: var(--grey); }
+    .diagram .exit.fallback { fill: var(--amber-soft); stroke: var(--amber); }
+    .diagram .t { font: 700 15px system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink); }
+    .diagram .s { font: 13px system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--muted); }
+    .diagram .x { font: 700 13px system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--ink); }
+    .diagram .arrow { stroke: var(--brand); stroke-width: 2.5; fill: none; }
+    .diagram .side { stroke: var(--grey); stroke-width: 2; fill: none; stroke-dasharray: 5 4; }
+    .diagram .label { font: italic 12px system-ui, sans-serif; fill: var(--muted); }
+
+    /* Screenshots */
+    figure { margin: 0; }
+    .shot { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+    .shot a { display: block; }
+    .shot img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--line); }
+    .shot figcaption { padding: 0.85rem 1rem; font-size: 0.97rem; }
+    .status { display: inline-block; padding: 0.05rem 0.55rem; border-radius: 999px; font-size: 0.8rem;
+              font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+    .status.ok { background: var(--brand-soft); color: var(--brand-dark); }
+    .status.nc { background: var(--grey-soft); color: #2f3a45; }
+    .status.refused { background: var(--red-soft); color: #8e1f14; }
+
+    /* Tables */
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--card); }
+    table { width: 100%; border-collapse: collapse; min-width: 560px; }
+    th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+    thead th { background: var(--brand-soft); font-size: 0.95rem; }
+    tbody tr:last-child td, tbody tr:last-child th { border-bottom: 0; }
+    td.num { font-variant-numeric: tabular-nums; font-weight: 700; white-space: nowrap; }
+    .small { font-size: 0.93rem; color: var(--muted); }
+
+    pre { margin: 0 0 1rem; padding: 1rem 1.1rem; background: #13241a; color: #e9f5ec; border-radius: 10px;
+          overflow-x: auto; font-size: 0.93rem; line-height: 1.55; }
+    pre code { background: none; padding: 0; color: inherit; }
+
+    .team { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+    .team li { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1rem 1.1rem; }
+    section:nth-of-type(even) .team li { background: var(--page); }
+    .team b { display: block; font-size: 1.05rem; }
+    .team span { color: var(--muted); font-size: 0.95rem; }
+
+    footer { background: var(--brand-dark); color: #dcefe2; padding: 2.5rem 0; font-size: 0.95rem; }
+    footer a { color: #fff; }
+    footer h2 { color: #fff; font-size: 1.2rem; }
+    footer ul { margin: 0 0 1.25rem; padding-left: 1.2rem; }
+
+    @media (max-width: 800px) {
+      .grid-3, .team { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 600px) {
+      body { font-size: 1rem; }
+      .grid-2, .grid-3, .team { grid-template-columns: 1fr; }
+      .topnav .brand { display: none; }
+      .hero { padding: 2.5rem 0 2.25rem; }
+      section { padding: 2.25rem 0; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="topnav" aria-label="Sections">
+    <div class="wrap">
+      <a class="brand" href="#top">Hall Recycling Helper</a>
+      <ul>
+        <li><a class="navlink" href="#problem">Problem</a></li>
+        <li><a class="navlink" href="#how">How it works</a></li>
+        <li><a class="navlink" href="#built">What we built</a></li>
+        <li><a class="navlink" href="#data">Data</a></li>
+        <li><a class="navlink" href="#runs">Real runs</a></li>
+        <li><a class="navlink" href="#evaluation">Evaluation</a></li>
+        <li><a class="navlink" href="#limits">Limitations</a></li>
+        <li><a class="navlink" href="#run">Run it</a></li>
+        <li><a class="navlink" href="#team">Team</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="wrap">
+      <p class="eyebrow">AILT9019 final project · The University of Hong Kong</p>
+      <h1>Hall Recycling Helper</h1>
+      <p class="pitch">Type an everyday item and see which bin it goes in, how to prepare it, and the official page the rule comes from.</p>
+      <div class="buttons">
+        <a class="button primary" href="https://github.com/yueliangxingren-cmyk/Hall_Recycling_Helper">GitHub repository</a>
+        <a class="button secondary" href="https://YOUR-DEMO-LINK-HERE">Watch the demo</a>
+        <a class="button secondary" href="https://youtu.be/8VtuTl4_6hk">Watch the presentation</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="problem">
+      <div class="wrap">
+        <p class="eyebrow">The problem</p>
+        <h2>Two bin systems, rules scattered across image guides</h2>
+        <p class="lead">HKU hall residents can recycle through HKU's smart recycling bins and re Kiosk, or through the Environmental Protection Department's (EPD) smart recycling bins. The two systems accept different things, and much of the official guidance is published as images and posters rather than searchable text.</p>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Who it is for</h3>
+            <p>HKU hall residents who want a quick, sourced answer to “where does this go?” for an everyday item, in either the HKU hall-bin context or the EPD smart-bin context.</p>
+          </div>
+          <div class="card">
+            <h3>What it will not do</h3>
+            <p>It never invents a rule. Unknown items get “Not covered by published rules — please ask your hall office.” Possibly hazardous items are refused. Posted hall signage and instructions from hall staff always take priority over the tool.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="wrap">
+        <p class="eyebrow">How it works</p>
+        <h2>From an item to a sourced answer</h2>
+        <p class="lead">Every answer is copied from a published rule in the dataset. The language model only chooses approved wording, and anything it gets wrong falls back to the published text.</p>
+        <div class="diagram">
+          <svg viewBox="0 0 640 760" role="img" aria-labelledby="pipe-title pipe-desc">
+            <title id="pipe-title">Request pipeline</title>
+            <desc id="pipe-desc">Item and context go through a hazard gate, then exact or synonym matching, then an embedding fallback with cosine similarity above 0.85, then Hall over HKU over EPD source priority, then LLM grounding with a published-rule fallback, producing an answer with bin, preparation step, source link and date checked. Hazards are refused; unmatched or conflicting items return not covered.</desc>
+            <defs>
+              <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="#1d6b38"/>
+              </marker>
+              <marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="#5f6b77"/>
+              </marker>
+            </defs>
+
+            <!-- main column -->
+            <rect class="node endpoint" x="10" y="10" width="380" height="74" rx="12"/>
+            <text class="t" x="30" y="42">Item + context</text>
+            <text class="s" x="30" y="64">e.g. “plastic bottle” · hku_hall or epd_smart</text>
+            <path class="arrow" d="M200,84 V110" marker-end="url(#ah)"/>
+
+            <rect class="node" x="10" y="114" width="380" height="74" rx="12"/>
+            <text class="t" x="30" y="146">1 · Hazard gate</text>
+            <text class="s" x="30" y="168">Keyword check runs before any lookup or model call</text>
+            <path class="arrow" d="M200,188 V214" marker-end="url(#ah)"/>
+
+            <rect class="node" x="10" y="218" width="380" height="74" rx="12"/>
+            <text class="t" x="30" y="250">2 · Exact / synonym match</text>
+            <text class="s" x="30" y="272">Case and whitespace ignored, within the context</text>
+            <path class="arrow" d="M200,292 V318" marker-end="url(#ah)"/>
+
+            <rect class="node" x="10" y="322" width="380" height="74" rx="12"/>
+            <text class="t" x="30" y="354">3 · Embedding fallback (optional)</text>
+            <text class="s" x="30" y="376">Only if no exact match: cosine &gt; 0.85</text>
+            <path class="arrow" d="M200,396 V422" marker-end="url(#ah)"/>
+
+            <rect class="node" x="10" y="426" width="380" height="74" rx="12"/>
+            <text class="t" x="30" y="458">4 · Source priority: Hall &gt; HKU &gt; EPD</text>
+            <text class="s" x="30" y="480">Equal-priority conflicts abstain</text>
+            <path class="arrow" d="M200,500 V526" marker-end="url(#ah)"/>
+
+            <rect class="node" x="10" y="530" width="380" height="74" rx="12"/>
+            <text class="t" x="30" y="562">5 · LLM grounding</text>
+            <text class="s" x="30" y="584">Must copy bin and prep text exactly; validated</text>
+            <path class="arrow" d="M200,604 V630" marker-end="url(#ah)"/>
+
+            <rect class="node endpoint" x="10" y="634" width="380" height="110" rx="12"/>
+            <text class="t" x="30" y="666">Answer</text>
+            <text class="s" x="30" y="690">Bin · prep step · source link · date checked</text>
+            <text class="s" x="30" y="712">Source and date always come from the dataset,</text>
+            <text class="s" x="30" y="732">never from the model</text>
+
+            <!-- side exits -->
+            <path class="side" d="M390,151 H448" marker-end="url(#ahg)"/>
+            <rect class="exit refused" x="452" y="124" width="178" height="54" rx="10"/>
+            <text class="x" x="466" y="148">refused</text>
+            <text class="label" x="466" y="167">possible hazard</text>
+
+            <path class="side" d="M390,359 H448" marker-end="url(#ahg)"/>
+            <path class="side" d="M390,463 H420 V386 H448" marker-end="url(#ahg)"/>
+            <rect class="exit nc" x="452" y="332" width="178" height="80" rx="10"/>
+            <text class="x" x="466" y="356">not_covered</text>
+            <text class="label" x="466" y="376">no match, below threshold,</text>
+            <text class="label" x="466" y="394">ambiguous or conflicting</text>
+
+            <path class="side" d="M390,567 H448" marker-end="url(#ahg)"/>
+            <rect class="exit fallback" x="452" y="532" width="178" height="70" rx="10"/>
+            <text class="x" x="466" y="556">published-rule</text>
+            <text class="x" x="466" y="574">fallback</text>
+            <text class="label" x="466" y="592">if output fails checks</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section id="built">
+      <div class="wrap">
+        <p class="eyebrow">What we built vs existing tools</p>
+        <h2>Our work, on top of standard parts</h2>
+        <div class="grid-2">
+          <div class="card built">
+            <h3>Built by the team</h3>
+            <ul>
+              <li>The 43-rule dataset, hand-curated from official pages</li>
+              <li>Hazard gate that runs before retrieval or any model call</li>
+              <li>Context-scoped retrieval: exact and synonym match, optional embedding fallback, Hall &gt; HKU &gt; EPD priority</li>
+              <li>LLM grounding with strict output validation and published-rule fallback</li>
+              <li>The web form (a single static page)</li>
+              <li>58 regression tests, a 30-case evaluation runner and smoke tests</li>
+            </ul>
+          </div>
+          <div class="card existing">
+            <h3>Existing tools we used</h3>
+            <ul>
+              <li><b>FastAPI</b>, <b>Uvicorn</b> and <b>Pydantic</b> for the web server and request validation</li>
+              <li>An <b>OpenAI-compatible chat API</b>; the recorded live runs used <code>qwen3.8-flash</code></li>
+              <li>Python's standard library for HTTP calls to the model provider</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="data">
+      <div class="wrap">
+        <p class="eyebrow">Domain customisation</p>
+        <h2>43 hand-curated rules, every one cited</h2>
+        <p class="lead">Each rule gives a bin and preparation step for two contexts, <b>HKU hall bins</b> and <b>EPD smart bins</b>, each with its own official source URL and the date it was checked. Seven official pages are cited, from the HKU re Campaign, the EPD and the Hong Kong Government.</p>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Same item, different answer</h3>
+            <p><b>Plastic bottle</b>, HKU hall bin: “Plastic bottle bin on an HKU smart recycling bin (not available at Central Podium Levels or Pine Court; use the Plastic slot at re Kiosk instead)”.</p>
+            <p>EPD smart bin: “Plastic bottles bin”.</p>
+          </div>
+          <div class="card">
+            <h3>Rejections are answers too</h3>
+            <p>Many rules state what is <em>not</em> accepted, for example cookware or toothpaste tubes at re Kiosk, so residents get the published rejection instead of a guess.</p>
+          </div>
+          <div class="card">
+            <h3>No coverage, no answer</h3>
+            <p>If a context has no published rule for an item, the app returns “not covered” for that context instead of borrowing an answer from the other system.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="runs">
+      <div class="wrap">
+        <p class="eyebrow">Real runs</p>
+        <h2>Three requests through the running app</h2>
+        <p class="lead">Screenshots from the app running locally in offline mode (no model credentials), so answers use the published-rule text. <a href="https://YOUR-DEMO-LINK-HERE">Watch the demo</a> to see it running live.</p>
+        <div class="grid-3">
+          <figure class="shot">
+            <a href="img/run-covered.png"><img src="img/run-covered.png" width="1212" height="1587" alt="App result for plastic bottle in the HKU hall bin context: Published rule badge, the plastic bottle bin with its location exception, the prep step, the re-facilities source link and date checked 2026-10-24."></a>
+            <figcaption><span class="status ok">ok</span> <b>plastic bottle</b> · HKU hall bin. Full bin instruction with its location exception, prep step, source link and date checked.</figcaption>
+          </figure>
+          <figure class="shot">
+            <a href="img/run-not-covered.png"><img src="img/run-not-covered.png" width="1212" height="1003" alt="App result for ceramic mug: Not covered badge with the message Not covered by published rules, please ask your hall office."></a>
+            <figcaption><span class="status nc">not covered</span> <b>ceramic mug</b> · HKU hall bin. No published rule, so the app sends the resident to the hall office.</figcaption>
+          </figure>
+          <figure class="shot">
+            <a href="img/run-refused.png"><img src="img/run-refused.png" width="1212" height="1103" alt="App result for paint thinner: Refused, possible hazard badge with a message to contact hall staff or use a hazardous-waste collection point."></a>
+            <figcaption><span class="status refused">refused</span> <b>paint thinner</b> · HKU hall bin. The hazard gate refuses before any lookup and points to hall staff.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="evaluation">
+      <div class="wrap">
+        <p class="eyebrow">Evaluation</p>
+        <h2>30 fixed cases, run offline and twice against the live model</h2>
+        <p class="lead">The suite in <a href="https://github.com/yueliangxingren-cmyk/Hall_Recycling_Helper/blob/main/tests.csv"><code>tests.csv</code></a> has 20 covered item pairs across both contexts, 5 hazard refusals, 4 unknown or unsupported items and 1 published rejection. Expected answers were fixed before the live runs. Live runs used <code>qwen3.8-flash</code> on 18 November 2026, with embeddings not configured.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th scope="col">Measure</th><th scope="col">Offline</th><th scope="col">Live run 1</th><th scope="col">Live run 2</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Correct response content</th><td class="num">30/30</td><td class="num">30/30</td><td class="num">30/30</td></tr>
+              <tr><th scope="row">Strict live pass <span class="small">(also requires a validated model answer)</span></th><td class="small">not applicable</td><td class="num">29/30</td><td class="num">29/30</td></tr>
+              <tr><th scope="row">Validated LLM answers</th><td class="small">not applicable</td><td class="num">20/21 eligible</td><td class="num">20/21 eligible</td></tr>
+              <tr><th scope="row">Source file</th>
+                <td><a href="https://github.com/yueliangxingren-cmyk/Hall_Recycling_Helper/blob/main/results/offline.json">offline.json</a></td>
+                <td><a href="https://github.com/yueliangxingren-cmyk/Hall_Recycling_Helper/blob/main/results/live-run-1.json">live-run-1.json</a></td>
+                <td><a href="https://github.com/yueliangxingren-cmyk/Hall_Recycling_Helper/blob/main/results/live-run-2.json">live-run-2.json</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="small" style="margin-top:1rem">Also recorded: all 58 regression tests pass (<a href="https://github.com/yueliangxingren-cmyk/Hall_Recycling_Helper/blob/main/results/unit-tests.txt">unit-tests.txt</a>), and a separate single-case live HTTP smoke test passed all 8 checks with validated model output (<a href="https://github.com/yueliangxingren-cmyk/Hall_Recycling_Helper/blob/main/results/live-http-20261118T091526Z.json">live-http-20261118T091526Z.json</a>). Method and caveats: <a href="https://github.com/yueliangxingren-cmyk/Hall_Recycling_Helper/blob/main/REPORT_NOTES_MMCHENG55.md">REPORT_NOTES_MMCHENG55.md</a>.</p>
+      </div>
+    </section>
+
+    <section id="limits">
+      <div class="wrap">
+        <p class="eyebrow">Failure cases and limitations</p>
+        <h2>Where it fell short, and what it does not cover</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Recorded failure cases</h3>
+            <ul>
+              <li><b>Provider timeouts.</b> In each live run, one request to the model timed out under the 15-second limit: T30 (single-use battery, EPD) in run 1 and T12 (foam box, EPD) in run 2. Both returned the correct published-rule fallback, so the content was right but the strict live check failed.</li>
+              <li><b>A wrong test expectation.</b> The first offline pilot scored 29/30 because T30 wrongly expected “not covered”. The fixture was corrected before the live runs; app code and rules were unchanged.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Limitations</h3>
+            <ul>
+              <li><b>No hall-level rules or bin-location hints.</b> No HKU hall publishes recycling rules or recycling-bin locations that we could find, so Hall &gt; HKU &gt; EPD priority is tested only with synthetic fixtures.</li>
+              <li><b>Live semantic retrieval is untested.</b> No embedding model was configured. Only exact and synonym matching ran in the live evaluations.</li>
+              <li><b>Live LLM status.</b> Two 30-case live runs and one live HTTP smoke test were recorded on 18 November 2026. Two runs cannot establish general model reliability.</li>
+              <li><b>The hazard gate is a keyword check.</b> It can refuse harmless items that contain a hazard word (for example “paintbrush”), and it is not a full hazard classifier.</li>
+              <li><b>Small, fixed test suite.</b> It checks faithful delivery of the dataset, not accuracy on arbitrary queries, and not the truth of the source pages themselves.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="run">
+      <div class="wrap">
+        <p class="eyebrow">Run it locally</p>
+        <h2>Try it on your own computer</h2>
+        <p class="lead">This page is a project showcase. The app itself is a small FastAPI server that you run locally. It works without any model credentials, using the published-rule text. From the repository folder (Python 3.10+):</p>
+<pre><code>py -m venv .venv              # macOS/Linux: python3 -m venv .venv
+.venv\Scripts\activate        # macOS/Linux: source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn app:app --reload</code></pre>
+        <p>Then open <code>http://127.0.0.1:8000</code>. To run the tests:</p>
+<pre><code>pip install -r requirements-dev.txt
+python -m unittest discover -s tests -v</code></pre>
+        <p>Model setup, the evaluation runner and more are in the <a href="https://github.com/yueliangxingren-cmyk/Hall_Recycling_Helper/blob/main/README.md">README</a>.</p>
+      </div>
+    </section>
+
+    <section id="team">
+      <div class="wrap">
+        <p class="eyebrow">Team</p>
+        <h2>Who made it</h2>
+        <ul class="team">
+          <li><b>Ekaterina Anufrieva</b><span>Rules dataset, UI</span></li>
+          <li><b>Jiang Zitong</b><span>Repository and environment</span></li>
+          <li><b>Haha Qi</b><span>README and delivery checks</span></li>
+          <li><b>Cheng Wai Chun</b><span>Retrieval, LLM grounding, evaluation</span></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <h2>Data sources</h2>
+      <ul>
+        <li>HKU re Campaign: <a href="https://www.wastereduction.hku.hk/recycling-101">Recycling 101</a>, <a href="https://www.wastereduction.hku.hk/photo-guide">Photo Guide</a>, <a href="https://www.wastereduction.hku.hk/re-facilities">re Facilities</a></li>
+        <li>EPD: <a href="https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/clean-recycling">Clean Recycling</a>, <a href="https://www.wastereduction.gov.hk/en-hk/waste-reduction-programme/rechargeable-battery-recycling-programme">Rechargeable Battery Recycling Programme</a></li>
+        <li>HKSAR Government: <a href="https://www.info.gov.hk/gia/general/202402/28/P2024022800418.htm">LCQ17 written reply, 28 February 2024</a>, <a href="https://isd.gov.hk/eng/tvapi/14_ep144.html">Information Services Department page</a></li>
+      </ul>
+      <p>Developed with AI coding assistants (Claude Code and Codex); see the report notes in the repository for details. AILT9019 course project, not an official HKU or EPD service.</p>
+    </div>
+  </footer>
+</body>
+</html>
