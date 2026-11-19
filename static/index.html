@@ -111,7 +111,7 @@
     <form id="ask-form">
       <div class="field field-item">
         <label for="item">Item</label>
-        <input id="item" type="text" placeholder="e.g. plastic bottle" required>
+        <input id="item" type="text" placeholder="e.g. plastic bottle" maxlength="500" required>
       </div>
       <div class="field">
         <label for="context">Which bins?</label>
@@ -132,6 +132,7 @@
     const resultBox = document.getElementById("result");
     const askButton = document.getElementById("ask-button");
     const loadingStatus = document.getElementById("loading-status");
+    const itemInput = document.getElementById("item");
 
     function setLoading(loading) {
       askButton.disabled = loading;
@@ -182,9 +183,13 @@
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
-      const item = document.getElementById("item").value.trim();
+      const item = itemInput.value.trim();
       const context = document.getElementById("context").value;
       if (!item || askButton.disabled) return;
+      if (item.length > itemInput.maxLength) {
+        showResult({ status: "error", message: "Enter an item of 500 characters or fewer." });
+        return;
+      }
 
       setLoading(true);
       resultBox.style.display = "none";
