@@ -109,7 +109,7 @@ them as a successful live LLM test.
 | Hall-level rules and bin-location hints | Not delivered: no published hall recycling source was found (see `REPORT_NOTES_ALEX.md`). Hall > HKU > EPD priority is tested with synthetic fixtures only, and a test asserts that no hall rule ships in `rules.json` | Add hall rules and hints only with a published, dated hall source |
 | API route and serialization | Single offline end-to-end case passes through the actual FastAPI app in process. On 18 November 2026 a live HTTP smoke test against a running Uvicorn server passed 8/8 with validated LLM output (`results/live-http-20261118T091526Z.json`) | Live embedding retrieval remains untested (no embedding model configured); the `/ask` app is run locally, not publicly deployed |
 | Rubric coverage | Reviewed by the team; no criterion-to-section mapping is stored in this repository | None in this repository |
-| Required submission format and sections | Not yet known | Confirm against the requirements PDF before calling this submission-ready |
+| Required submission format and sections | Confirmed from the Moodle Final Project Submission page and the course Ed announcement: one team ZIP (≤100 MB) containing `report.pdf` (≤5 pages excluding appendices, including the Ethics & AI-use disclosure and per-member contributions in Section 6) and `submission_links.txt` (team ID, public webpage, GitHub repo, presentation and demo YouTube links); a 3-minute Zoom presentation with every member speaking and names visible; a demo with no time limit; due 20 November 2026, 23:59 HKT | None in this repository |
 
 After readable assessment sources are available, verify their precise criteria,
 format/length limits, required demonstrations and evidence, and any source or
