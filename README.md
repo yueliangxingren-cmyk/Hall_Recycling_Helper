@@ -1,6 +1,14 @@
 # Hall_Recycling_Helper
 The app is for HKU residents checking a published rule for recycling an everyday item.
 
+- **Project page:** https://yueliangxingren-cmyk.github.io/Hall_Recycling_Helper/
+- **Demo video:** https://youtu.be/zqqcZUC3lBA
+- **Presentation video:** https://youtu.be/8VtuTl4_6hk
+
+**Team (AILT9019):** Ekaterina Anufrieva (rules dataset, UI), Jiang Zitong
+(repository and environment), Haha Qi (README and delivery checks), Cheng Wai
+Chun (retrieval, LLM grounding, evaluation).
+
 ## Install and run
 
 Requires Python 3.10+. From this folder:
@@ -168,18 +176,21 @@ In-process mode changes only how the test reaches `/ask`. Live modes still
 make real external provider requests and fail on fallback. These checks do not
 prove TCP listening, deployment, or browser behavior.
 
-## Assessment documentation status
+## Evaluation status
 
-The implementation plan records what is implemented, what the tests establish,
-and what still needs live evidence. Automated results and mocked integration
-results must not be reported as a successful live provider test. The assessment
-rubric and requirements PDFs are identified, but their contents could not be
-read in this session. Rubric alignment is therefore **pending verification**;
-no rubric scores, mandatory sections, word limits, or submission rules have
-been inferred. Once readable copies are available, map each actual criterion
-to a document section and evidence, and resolve any remaining gaps.
+The team has reviewed the assessment rubric. Evaluation evidence is in
+`results/`:
 
-Implementation sequence and acceptance criteria are in `IMPLEMENTATION_PLAN.md`.
+- `results/live-run-1.json` and `results/live-run-2.json`: two live runs of
+  the fixed 30-case suite in `tests.csv` against the real chat provider
+  (18 November 2026);
+- `results/offline.json`: the same 30 cases with provider calls disabled;
+- `results/unit-tests.txt`: the 58-test regression suite.
+
+Embedding retrieval was not tested live, because no embedding model was
+configured. Results and limitations are summarised in
+`REPORT_NOTES_MMCHENG55.md`. Implementation sequence and acceptance criteria
+are in `IMPLEMENTATION_PLAN.md`.
 
 
 ## Example core-path check
@@ -198,7 +209,7 @@ This example checks the live input → processing → output path and unsupporte
 
 ## Demonstration
 
-The submission recording, `demo.mp4`, shows the running web application and live item checks in 54.49 seconds.
+The [demo video](https://youtu.be/zqqcZUC3lBA) shows the running web application and live item checks. The [presentation video](https://youtu.be/8VtuTl4_6hk) covers the project as a whole.
 
 ## Repeatable 30-case evaluation (mmcheng55)
 
